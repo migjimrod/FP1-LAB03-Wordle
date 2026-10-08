@@ -12,8 +12,10 @@ def es_palabra_valida(cadena: str) -> bool:
     Devuelve:
         True si la cadena es una palabra válida, False en otro caso
     '''
-    # TODO: Implementa esta función
-    return True
+    if len(cadena) == 5 and cadena.isalpha():
+        return True
+    else: 
+        return False
 
 def calcula_minutos_y_segundos(inicio: datetime, fin: datetime) -> tuple:
     """ 
@@ -25,14 +27,60 @@ def calcula_minutos_y_segundos(inicio: datetime, fin: datetime) -> tuple:
     Devuelve:
         Una tupla (minutos, segundos) con la diferencia entre los dos datetime
     """
-    # TODO: Implementa esta función
-    pass
+    tiempo_tardado = fin - inicio
+    segundos_totales = int(tiempo_tardado.total_seconds())
+    mins = segundos_totales // 60
+    segundos = segundos_totales % 60 
+    return (mins , segundos)
 
-# TODO: Escribe la cabecera completa e implementa la función quitar_letra
+def quitar_letra(cadena:str,caracter: str)->str:
+    '''
+    Recibe una cadena y un caracter a eliminar, devuelve la cadena con el texto sin el caracter
 
-# TODO: Escribe la cabecera completa e implementa la función marcar_verdes
+    Parámetros:
+        cadena:Palabra introducida
+        caracter: caracter deseado a eliminar
+    Devulve:
+        La cadena sin el caracter especificado
+    '''
+    if not caracter in cadena:
+        return cadena
+    else:
+        txt =""
+        borrado= False
+        for c in cadena:
+            if c == caracter and not borrado:
+                txt += ""
+                borrado = True 
+            else:
+                txt += c
+        return txt
+        
 
-# TODO: Escribe la cabecera completa e implementa la función marcar_amarillos
+def marcar_verdes(palabra_secreta: str, intento: str)->str:
+    verdes = ""
+    restantes= palabra_secreta
+    for c in range(len(intento)):
+        if intento[c] == palabra_secreta[c]:
+            verdes += "V"
+            restantes = quitar_letra(restantes,intento[c])
+        else:
+            verdes += "_"
+    return (verdes, restantes)
+
+def marcar_amarillos(intento:str,verdes:str,restantes:str)->str:
+    colores =""
+    for c in range(len(intento)):
+        if intento[c] == verdes[c] == "V":
+            colores += "V"
+        else:
+            if intento[c] in restantes:
+                colores += "A"
+                restantes = quitar_letra(restantes,intento[c])
+            else:
+                colores+="_"
+    return colores
+        
 
 def obtener_pistas(palabra_secreta: str, intento: str) -> str:
     """
