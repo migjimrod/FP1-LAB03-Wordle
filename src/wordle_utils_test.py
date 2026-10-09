@@ -53,5 +53,15 @@ def test_marcar_amarillos():
     assert marcar_amarillos("secta", "_____", "casar") == "A_A_A"
     assert marcar_amarillos("sacar", "_V_VV", "cs") == "AVAVV"
     assert marcar_amarillos("peras", "___V_", "csar") == "__AVA"
-test_marcar_amarillos()
+#test_marcar_amarillos()
+from wordle_utils import obtener_pistas
+def test_obtener_pistas():
+    print("Probando obtener_pistas...")
+    assert obtener_pistas("casar", "polio") == "_____"
+    assert obtener_pistas("casar", "casar") == "VVVVV"
+    assert obtener_pistas("casar", "cazar") == "VV_VV"
+    assert obtener_pistas("casar", "secta") == "A_A_A"
+    assert obtener_pistas("casar", "sacar") == "AVAVV"
+    assert obtener_pistas("casar", "peras") == "__AVA"
+#test_obtener_pistas()
 print("✅Todas las pruebas pasaron correctamente.")

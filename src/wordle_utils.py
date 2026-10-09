@@ -71,7 +71,7 @@ def marcar_verdes(palabra_secreta: str, intento: str)->str:
 def marcar_amarillos(intento:str,verdes:str,restantes:str)->str:
     colores =""
     for c in range(len(intento)):
-        if intento[c] == verdes[c] == "V":
+        if verdes[c] == "V":
             colores += "V"
         else:
             if intento[c] in restantes:
@@ -91,7 +91,10 @@ def obtener_pistas(palabra_secreta: str, intento: str) -> str:
     Devuelve:
         Una cadena de 5 caracteres con 'V', 'A' y '_'
     """
-    # TODO: Implementa esta función
-    return "_____"  # Elimina esta línea cuando la implementes
+    verdes, restantes = marcar_verdes(palabra_secreta, intento)
+    resultado = marcar_amarillos(intento, verdes, restantes)
+    return resultado
+
+      
 
 
