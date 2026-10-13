@@ -200,6 +200,7 @@ def test_marcar_amarillos():
     assert marcar_amarillos("secta", "_____", "casar") == "A_A_A"
     assert marcar_amarillos("sacar", "_V_VV", "cs") == "AVAVV"
     assert marcar_amarillos("peras", "___V_", "csar") == "__AVA"
+    assert marcar_amarillos("babas", "_____", "aeiou") == "_A___"
 ```
 
 **Ejecuta las pruebas y comprueba que tu implementación las pasa todas correctamente.**
