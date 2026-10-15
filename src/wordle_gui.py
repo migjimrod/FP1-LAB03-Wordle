@@ -1,5 +1,6 @@
 '''
 Interfaz gráfica para el juego Wordle.
+Interfaz
 '''
 
 import tkinter as tk
